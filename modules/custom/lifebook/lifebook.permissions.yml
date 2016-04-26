@@ -1,0 +1,39 @@
+add template entities:
+  title: 'Create new Template entities'
+
+administer template entities:
+  title: 'Administer Template entities'
+  description: 'Allow to access the administration form to configure Template entities.'
+  restrict access: true
+
+delete template entities:
+  title: 'Delete Template entities'
+
+edit template entities:
+  title: 'Edit Template entities'
+
+view published template entities:
+  title: 'View published Template entities'
+
+view unpublished template entities:
+  title: 'View unpublished Template entities'
+add composition entities:
+  title: 'Create new Composition entities'
+
+administer composition entities:
+  title: 'Administer Composition entities'
+  description: 'Allow to access the administration form to configure Composition entities.'
+  restrict access: true
+
+delete composition entities:
+  title: 'Delete Composition entities'
+
+edit composition entities:
+  title: 'Edit Composition entities'
+
+view published composition entities:
+  title: 'View published Composition entities'
+
+view unpublished composition entities:
+  title: 'View unpublished Composition entities'
+

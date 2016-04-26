@@ -1,0 +1,34 @@
+# Template menu items definition
+lifebook.menu:
+  title: Lifebook
+  description: 'Lifebook'
+  route_name: system.admin_structure
+  parent: system.admin_structure
+  weight: 10
+
+entity.template.collection:
+  title: 'Template list'
+  route_name: entity.template.collection
+  description: 'List Template entities'
+  parent: lifebook.menu
+  weight: 100
+
+template.admin.structure.settings:
+  title: Template settings
+  description: 'Configure Template entities'
+  route_name: template.settings
+  parent: lifebook.menu
+# Composition menu items definition
+entity.composition.collection:
+  title: 'Composition list'
+  route_name: entity.composition.collection
+  description: 'List Composition entities'
+  parent: lifebook.menu
+  weight: 100
+
+composition.admin.structure.settings:
+  title: Composition settings
+  description: 'Configure Composition entities'
+  route_name: composition.settings
+  parent: lifebook.menu
+

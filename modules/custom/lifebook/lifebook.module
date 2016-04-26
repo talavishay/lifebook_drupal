@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains lifebook.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function lifebook_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the lifebook module.
+    case 'help.page.lifebook':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('lifebook') . '</p>';
+      return $output;
+
+    default:
+  }
+}

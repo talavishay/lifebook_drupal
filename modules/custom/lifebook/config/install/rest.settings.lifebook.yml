@@ -1,0 +1,77 @@
+resources:
+  'entity:template':
+    GET:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    POST:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    PATCH:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    DELETE:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+  'entity:composition':
+    GET:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    POST:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    PATCH:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    DELETE:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+  'entity:file':
+    GET:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    POST:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    DELETE:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+    PATCH:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+  'upload_resource':
+    POST:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+  'svg_resource':
+    GET:
+      supported_formats:
+        - json
+      supported_auth:
+        - cookie
+link_domain: null

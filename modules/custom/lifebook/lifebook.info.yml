@@ -1,0 +1,9 @@
+name: lifebook
+type: module
+description: lifebook
+core: 8.x
+package: lifebook
+dependencies:
+  - rest
+  - json_field
+  - admin_toolbar

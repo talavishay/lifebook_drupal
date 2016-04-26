@@ -1,0 +1,11 @@
+entity.template.add_form:
+  route_name: entity.template.add_form
+  title: 'Add Template'
+  appears_on:
+    - entity.template.collection
+entity.composition.add_form:
+  route_name: entity.composition.add_form
+  title: 'Add Composition'
+  appears_on:
+    - entity.composition.collection
+

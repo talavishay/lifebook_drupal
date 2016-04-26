@@ -1,0 +1,22 @@
+{#
+/**
+ * @file composition.html.twig
+ * Default theme implementation to present Composition data.
+ *
+ * This template is used when viewing Composition pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_composition()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('composition') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

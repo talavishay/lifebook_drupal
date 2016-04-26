@@ -1,0 +1,41 @@
+# Template routing definition
+template.settings_tab:
+  route_name: template.settings
+  title: 'Settings'
+  base_route: template.settings
+entity.template.canonical:
+  route_name: entity.template.canonical
+  base_route: entity.template.canonical
+  title: 'View'
+
+entity.template.edit_form:
+  route_name: entity.template.edit_form
+  base_route: entity.template.canonical
+  title: Edit
+
+entity.template.delete_form:
+  route_name:  entity.template.delete_form
+  base_route:  entity.template.canonical
+  title: Delete
+  weight: 10
+
+# Composition routing definition
+composition.settings_tab:
+  route_name: composition.settings
+  title: 'Settings'
+  base_route: composition.settings
+entity.composition.canonical:
+  route_name: entity.composition.canonical
+  base_route: entity.composition.canonical
+  title: 'View'
+
+entity.composition.edit_form:
+  route_name: entity.composition.edit_form
+  base_route: entity.composition.canonical
+  title: Edit
+
+entity.composition.delete_form:
+  route_name:  entity.composition.delete_form
+  base_route:  entity.composition.canonical
+  title: Delete
+  weight: 10
