@@ -32,3 +32,17 @@ composition.admin.structure.settings:
   route_name: composition.settings
   parent: lifebook.menu
 
+# Backgrounds menu items definition
+entity.backgrounds.collection:
+  title: 'Backgrounds list'
+  route_name: entity.backgrounds.collection
+  description: 'List Backgrounds entities'
+  parent: lifebook.menu
+  weight: 100
+
+backgrounds.admin.structure.settings:
+  title: Backgrounds settings
+  description: 'Configure Backgrounds entities'
+  route_name: backgrounds.settings
+  parent: lifebook.menu
+

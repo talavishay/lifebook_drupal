@@ -9,3 +9,8 @@ entity.composition.add_form:
   appears_on:
     - entity.composition.collection
 
+entity.backgrounds.add_form:
+  route_name: entity.backgrounds.add_form
+  title: 'Add Backgrounds'
+  appears_on:
+    - entity.backgrounds.collection

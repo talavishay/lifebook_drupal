@@ -37,3 +37,22 @@ view published composition entities:
 view unpublished composition entities:
   title: 'View unpublished Composition entities'
 
+add backgrounds entities:
+  title: 'Create new Backgrounds entities'
+
+administer backgrounds entities:
+  title: 'Administer Backgrounds entities'
+  description: 'Allow to access the administration form to configure Backgrounds entities.'
+  restrict access: true
+
+delete backgrounds entities:
+  title: 'Delete Backgrounds entities'
+
+edit backgrounds entities:
+  title: 'Edit Backgrounds entities'
+
+view published backgrounds entities:
+  title: 'View published Backgrounds entities'
+
+view unpublished backgrounds entities:
+  title: 'View unpublished Backgrounds entities'

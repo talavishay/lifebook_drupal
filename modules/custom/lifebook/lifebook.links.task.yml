@@ -39,3 +39,24 @@ entity.composition.delete_form:
   base_route:  entity.composition.canonical
   title: Delete
   weight: 10
+# Backgrounds routing definition
+backgrounds.settings_tab:
+  route_name: backgrounds.settings
+  title: 'Settings'
+  base_route: backgrounds.settings
+entity.backgrounds.canonical:
+  route_name: entity.backgrounds.canonical
+  base_route: entity.backgrounds.canonical
+  title: 'View'
+
+entity.backgrounds.edit_form:
+  route_name: entity.backgrounds.edit_form
+  base_route: entity.backgrounds.canonical
+  title: Edit
+
+entity.backgrounds.delete_form:
+  route_name:  entity.backgrounds.delete_form
+  base_route:  entity.backgrounds.canonical
+  title: Delete
+  weight: 10
+
