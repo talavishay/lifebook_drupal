@@ -56,3 +56,60 @@ view published backgrounds entities:
 
 view unpublished backgrounds entities:
   title: 'View unpublished Backgrounds entities'
+add chapters entities:
+  title: 'Create new Chapters entities'
+
+administer chapters entities:
+  title: 'Administer Chapters entities'
+  description: 'Allow to access the administration form to configure Chapters entities.'
+  restrict access: true
+
+delete chapters entities:
+  title: 'Delete Chapters entities'
+
+edit chapters entities:
+  title: 'Edit Chapters entities'
+
+view published chapters entities:
+  title: 'View published Chapters entities'
+
+view unpublished chapters entities:
+  title: 'View unpublished Chapters entities'
+add pages entities:
+  title: 'Create new Pages entities'
+
+administer pages entities:
+  title: 'Administer Pages entities'
+  description: 'Allow to access the administration form to configure Pages entities.'
+  restrict access: true
+
+delete pages entities:
+  title: 'Delete Pages entities'
+
+edit pages entities:
+  title: 'Edit Pages entities'
+
+view published pages entities:
+  title: 'View published Pages entities'
+
+view unpublished pages entities:
+  title: 'View unpublished Pages entities'
+add book entities:
+  title: 'Create new Book entities'
+
+administer book entities:
+  title: 'Administer Book entities'
+  description: 'Allow to access the administration form to configure Book entities.'
+  restrict access: true
+
+delete book entities:
+  title: 'Delete Book entities'
+
+edit book entities:
+  title: 'Edit Book entities'
+
+view published book entities:
+  title: 'View published Book entities'
+
+view unpublished book entities:
+  title: 'View unpublished Book entities'

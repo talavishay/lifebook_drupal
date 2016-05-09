@@ -1,0 +1,22 @@
+{#
+/**
+ * @file pages.html.twig
+ * Default theme implementation to present Pages data.
+ *
+ * This template is used when viewing Pages pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_pages()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('pages') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

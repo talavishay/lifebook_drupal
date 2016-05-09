@@ -60,3 +60,62 @@ entity.backgrounds.delete_form:
   title: Delete
   weight: 10
 
+# Chapters routing definition
+chapters.settings_tab:
+  route_name: chapters.settings
+  title: 'Settings'
+  base_route: chapters.settings
+entity.chapters.canonical:
+  route_name: entity.chapters.canonical
+  base_route: entity.chapters.canonical
+  title: 'View'
+
+entity.chapters.edit_form:
+  route_name: entity.chapters.edit_form
+  base_route: entity.chapters.canonical
+  title: Edit
+
+entity.chapters.delete_form:
+  route_name:  entity.chapters.delete_form
+  base_route:  entity.chapters.canonical
+  title: Delete
+  weight: 10
+
+# Pages routing definition
+pages.settings_tab:
+  route_name: pages.settings
+  title: 'Settings'
+  base_route: pages.settings
+entity.pages.canonical:
+  route_name: entity.pages.canonical
+  base_route: entity.pages.canonical
+  title: 'View'
+
+entity.pages.edit_form:
+  route_name: entity.pages.edit_form
+  base_route: entity.pages.canonical
+  title: Edit
+
+entity.pages.delete_form:
+  route_name:  entity.pages.delete_form
+  base_route:  entity.pages.canonical
+  title: Delete
+  weight: 10
+
+# Book routing definition
+entity.book.canonical:
+  route_name: entity.book.canonical
+  base_route: entity.book.canonical
+  title: 'View'
+
+entity.book.edit_form:
+  route_name: entity.book.edit_form
+  base_route: entity.book.canonical
+  title: Edit
+
+entity.book.delete_form:
+  route_name:  entity.book.delete_form
+  base_route:  entity.book.canonical
+  title: Delete
+  weight: 10
+

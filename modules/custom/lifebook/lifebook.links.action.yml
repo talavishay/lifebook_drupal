@@ -14,3 +14,24 @@ entity.backgrounds.add_form:
   title: 'Add Backgrounds'
   appears_on:
     - entity.backgrounds.collection
+entity.chapters.add_form:
+  route_name: entity.chapters.add_form
+  title: 'Add Chapters'
+  appears_on:
+    - entity.chapters.collection
+entity.pages.add_form:
+  route_name: entity.pages.add_form
+  title: 'Add Pages'
+  appears_on:
+    - entity.pages.collection
+entity.book.add_form:
+  route_name: 'book.add_page'
+  title: 'Add Book'
+  appears_on:
+    - entity.book.collection
+entity.book_type.add_form:
+  route_name: 'entity.book_type.add_form'
+  title: 'Add Book type'
+  appears_on:
+    - entity.book_type.collection
+
