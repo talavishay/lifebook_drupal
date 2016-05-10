@@ -7,3 +7,5 @@ dependencies:
   - rest
   - json_field
   - admin_toolbar
+  - image_raw_formatter
+  - views_field_view

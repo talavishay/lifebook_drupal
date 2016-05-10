@@ -18,19 +18,21 @@ template.admin.structure.settings:
   description: 'Configure Template entities'
   route_name: template.settings
   parent: lifebook.menu
+  weight: 100
 # Composition menu items definition
 entity.composition.collection:
   title: 'Composition list'
   route_name: entity.composition.collection
   description: 'List Composition entities'
   parent: lifebook.menu
-  weight: 100
+  weight: 90
 
 composition.admin.structure.settings:
   title: Composition settings
   description: 'Configure Composition entities'
   route_name: composition.settings
   parent: lifebook.menu
+  weight: 90
 
 # Backgrounds menu items definition
 entity.backgrounds.collection:
@@ -38,33 +40,37 @@ entity.backgrounds.collection:
   route_name: entity.backgrounds.collection
   description: 'List Backgrounds entities'
   parent: lifebook.menu
-  weight: 100
+  weight: 80
 
 backgrounds.admin.structure.settings:
   title: Backgrounds settings
   description: 'Configure Backgrounds entities'
   route_name: backgrounds.settings
   parent: lifebook.menu
+  weight: 80
 
 # Chapters menu items definition
 entity.chapters.collection:
   title: 'Chapters list'
   route_name: entity.chapters.collection
   description: 'List Chapters entities'
-  weight: 100
+  parent: lifebook.menu
+  weight: 70
 
 chapters.admin.structure.settings:
   title: Chapters settings
   description: 'Configure Chapters entities'
   route_name: chapters.settings
   parent: lifebook.menu
+  weight: 70
 
 # Pages menu items definition
 entity.pages.collection:
   title: 'Pages list'
   route_name: entity.pages.collection
   description: 'List Pages entities'
-  weight: 100
+  parent: lifebook.menu
+  weight: 60
 
 pages.admin.structure.settings:
   title: Pages settings
@@ -72,13 +78,14 @@ pages.admin.structure.settings:
   route_name: pages.settings
   parent: lifebook.menu
   parent: system.admin_structure
+  weight: 60
 # Book menu items definition
 entity.book.collection:
   title: 'Book list'
   route_name: entity.book.collection
   description: 'List Book entities'
   parent: lifebook.menu
-  weight: 100
+  weight: 50
 
 # Book type menu items definition
 entity.book_type.collection:
@@ -86,7 +93,7 @@ entity.book_type.collection:
   route_name: entity.book_type.collection
   description: 'List Book type (bundles)'
   parent: lifebook.menu
-  weight: 99
+  weight: 50
 
 
 
