@@ -99,3 +99,19 @@ entity.book_type.collection:
 
 
 
+# Project menu items definition
+entity.project.collection:
+  title: 'Project list'
+  route_name: entity.project.collection
+  description: 'List Project entities'
+  parent: lifebook.menu
+  weight: 96
+
+# Project type menu items definition
+entity.project_type.collection:
+  title: 'Project type'
+  route_name: entity.project_type.collection
+  description: 'List Project type (bundles)'
+  parent: lifebook.menu
+  weight: 95
+

@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\lifebook\Entity\composition.
- */
-
 namespace Drupal\lifebook\Entity;
 
 use Drupal\Core\Entity\EntityStorageInterface;
@@ -12,37 +7,39 @@ use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
-use Drupal\lifebook\compositionInterface;
+use Drupal\lifebook\ProjectInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Defines the Composition entity.
+ * Defines the Project entity.
  *
  * @ingroup lifebook
  *
  * @ContentEntityType(
- *   id = "composition",
- *   label = @Translation("Composition"),
+ *   id = "project",
+ *   label = @Translation("Project"),
+ *   bundle_label = @Translation("Project type"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\lifebook\compositionListBuilder",
- *     "views_data" = "Drupal\lifebook\Entity\compositionViewsData",
+ *     "list_builder" = "Drupal\lifebook\ProjectListBuilder",
+ *     "views_data" = "Drupal\lifebook\Entity\ProjectViewsData",
  *
  *     "form" = {
- *       "default" = "Drupal\lifebook\Form\compositionForm",
- *       "add" = "Drupal\lifebook\Form\compositionForm",
- *       "edit" = "Drupal\lifebook\Form\compositionForm",
- *       "delete" = "Drupal\lifebook\Form\compositionDeleteForm",
+ *       "default" = "Drupal\lifebook\Form\ProjectForm",
+ *       "add" = "Drupal\lifebook\Form\ProjectForm",
+ *       "edit" = "Drupal\lifebook\Form\ProjectForm",
+ *       "delete" = "Drupal\lifebook\Form\ProjectDeleteForm",
  *     },
- *     "access" = "Drupal\lifebook\compositionAccessControlHandler",
+ *     "access" = "Drupal\lifebook\ProjectAccessControlHandler",
  *     "route_provider" = {
- *       "html" = "Drupal\lifebook\compositionHtmlRouteProvider",
+ *       "html" = "Drupal\lifebook\ProjectHtmlRouteProvider",
  *     },
  *   },
- *   base_table = "composition",
- *   admin_permission = "administer composition entities",
+ *   base_table = "project",
+ *   admin_permission = "administer project entities",
  *   entity_keys = {
  *     "id" = "id",
+ *     "bundle" = "type",
  *     "label" = "name",
  *     "uuid" = "uuid",
  *     "uid" = "user_id",
@@ -50,17 +47,20 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "/lifebook/composition/{composition}",
- *     "add-form" = "/lifebook/composition/add",
- *     "edit-form" = "/lifebook/composition/{composition}/edit",
- *     "delete-form" = "/lifebook/composition/{composition}/delete",
- *     "collection" = "/lifebook/composition",
+ *     "canonical" = "/lifebook/project/{project}",
+ *     "add-form" = "/lifebook/project/add/{project_type}",
+ *     "edit-form" = "/lifebook/project/{project}/edit",
+ *     "delete-form" = "/lifebook/project/{project}/delete",
+ *     "collection" = "/lifebook/project",
  *   },
- *   field_ui_base_route = "composition.settings"
+ *   bundle_entity_type = "project_type",
+ *   field_ui_base_route = "entity.project_type.edit_form"
  * )
  */
-class composition extends ContentEntityBase implements compositionInterface {
+class Project extends ContentEntityBase implements ProjectInterface {
+
   use EntityChangedTrait;
+
   /**
    * {@inheritdoc}
    */
@@ -69,6 +69,13 @@ class composition extends ContentEntityBase implements compositionInterface {
     $values += array(
       'user_id' => \Drupal::currentUser()->id(),
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getType() {
+    return $this->bundle();
   }
 
   /**
@@ -152,16 +159,21 @@ class composition extends ContentEntityBase implements compositionInterface {
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields['id'] = BaseFieldDefinition::create('integer')
       ->setLabel(t('ID'))
-      ->setDescription(t('The ID of the Composition entity.'))
+      ->setDescription(t('The ID of the Project entity.'))
       ->setReadOnly(TRUE);
+    $fields['type'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('Type'))
+      ->setDescription(t('The Project type/bundle.'))
+      ->setSetting('target_type', 'project_type')
+      ->setRequired(TRUE);
     $fields['uuid'] = BaseFieldDefinition::create('uuid')
       ->setLabel(t('UUID'))
-      ->setDescription(t('The UUID of the Composition entity.'))
+      ->setDescription(t('The UUID of the Project entity.'))
       ->setReadOnly(TRUE);
 
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Authored by'))
-      ->setDescription(t('The user ID of author of the Composition entity.'))
+      ->setDescription(t('The user ID of author of the Project entity.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
       ->setSetting('handler', 'default')
@@ -187,7 +199,7 @@ class composition extends ContentEntityBase implements compositionInterface {
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Composition entity.'))
+      ->setDescription(t('The name of the Project entity.'))
       ->setSettings(array(
         'max_length' => 50,
         'text_processing' => 0,
@@ -204,55 +216,15 @@ class composition extends ContentEntityBase implements compositionInterface {
       ))
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
-	
-	$fields['data'] = BaseFieldDefinition::create('json')
-      ->setLabel(t('Data'))
-      ->setDescription(t('The data of the Composition entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('{"objects":[],"background":""}')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'json',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'json_textarea',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-	
-	$fields['meta'] = BaseFieldDefinition::create('json')
-      ->setLabel(t('Meta'))
-      ->setDescription(t('The Meta information for the Composition'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('{"preview":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABVCAIAAAHtYiAhAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+AFCg8RBswrHy4AAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAgUlEQVRo3u3XQQqFMAxAwST3v3O8QLsoqBiZLDU8hvo/YnZ3rKZiM7+/kcsjqYPItKu5+xGcHZztcduevG3b/vM3TcVjIy0tLS0tPTLttSstLS0tLS0tLS0tLS0t/Y0P6ZHnAQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDf3eXKN0FicG67qgAAAAAElFTkSuQmCC"}')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'json',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'json_textarea',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
 
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Publishing status'))
-      ->setDescription(t('A boolean indicating whether the Composition is published.'))
+      ->setDescription(t('A boolean indicating whether the Project is published.'))
       ->setDefaultValue(TRUE);
 
     $fields['langcode'] = BaseFieldDefinition::create('language')
       ->setLabel(t('Language code'))
-      ->setDescription(t('The language code for the Composition entity.'))
+      ->setDescription(t('The language code for the Project entity.'))
       ->setDisplayOptions('form', array(
         'type' => 'language_select',
         'weight' => 10,
