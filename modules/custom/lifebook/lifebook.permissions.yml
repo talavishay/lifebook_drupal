@@ -132,3 +132,22 @@ view published project entities:
 
 view unpublished project entities:
   title: 'View unpublished Project entities'
+add page object entities:
+  title: 'Create new Page object entities'
+
+administer page object entities:
+  title: 'Administer Page object entities'
+  description: 'Allow to access the administration form to configure Page object entities.'
+  restrict access: true
+
+delete page object entities:
+  title: 'Delete Page object entities'
+
+edit page object entities:
+  title: 'Edit Page object entities'
+
+view published page object entities:
+  title: 'View published Page object entities'
+
+view unpublished page object entities:
+  title: 'View unpublished Page object entities'

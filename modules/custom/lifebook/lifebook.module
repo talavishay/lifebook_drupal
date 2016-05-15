@@ -48,6 +48,16 @@ $theme['project'] = [
     'variables' => ['content' => NULL],
     'file' => 'project.page.inc',
   ];
+  $theme['page_object'] = [
+    'render element' => 'elements',
+    'file' => 'page_object.page.inc',
+    'template' => 'page_object',
+  ];
+  $theme['page_object_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'page_object.page.inc',
+  ];
   return $theme;
 }
 
@@ -81,5 +91,22 @@ function lifebook_theme_suggestions_project(array $variables) {
   $suggestions[] = 'project__' . $entity->bundle() . '__' . $sanitized_view_mode;
   $suggestions[] = 'project__' . $entity->id();
   $suggestions[] = 'project__' . $entity->id() . '__' . $sanitized_view_mode;
+  return $suggestions;
+}
+
+
+/**
+* Implements hook_theme_suggestions_HOOK().
+*/
+function lifebook_theme_suggestions_page_object(array $variables) {
+  $suggestions = array();
+  $entity = $variables['elements']['#page_object'];
+  $sanitized_view_mode = strtr($variables['elements']['#view_mode'], '.', '_');
+
+  $suggestions[] = 'page_object__' . $sanitized_view_mode;
+  $suggestions[] = 'page_object__' . $entity->bundle();
+  $suggestions[] = 'page_object__' . $entity->bundle() . '__' . $sanitized_view_mode;
+  $suggestions[] = 'page_object__' . $entity->id();
+  $suggestions[] = 'page_object__' . $entity->id() . '__' . $sanitized_view_mode;
   return $suggestions;
 }

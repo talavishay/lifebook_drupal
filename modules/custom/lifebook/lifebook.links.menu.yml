@@ -96,9 +96,6 @@ entity.book_type.collection:
   weight: 50
 
 
-
-
-
 # Project menu items definition
 entity.project.collection:
   title: 'Project list'
@@ -114,4 +111,20 @@ entity.project_type.collection:
   description: 'List Project type (bundles)'
   parent: lifebook.menu
   weight: 95
+
+# Page object menu items definition
+entity.page_object.collection:
+  title: 'Page object list'
+  route_name: entity.page_object.collection
+  description: 'List Page object entities'
+  parent: lifebook.menu
+  weight: 100
+
+# Page object type menu items definition
+entity.page_object_type.collection:
+  title: 'Page object type'
+  route_name: entity.page_object_type.collection
+  description: 'List Page object type (bundles)'
+  parent: lifebook.menu
+  weight: 99
 

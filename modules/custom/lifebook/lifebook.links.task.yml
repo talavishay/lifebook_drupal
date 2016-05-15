@@ -136,3 +136,20 @@ entity.project.delete_form:
   title: Delete
   weight: 10
 
+# Page object routing definition
+entity.page_object.canonical:
+  route_name: entity.page_object.canonical
+  base_route: entity.page_object.canonical
+  title: 'View'
+
+entity.page_object.edit_form:
+  route_name: entity.page_object.edit_form
+  base_route: entity.page_object.canonical
+  title: Edit
+
+entity.page_object.delete_form:
+  route_name:  entity.page_object.delete_form
+  base_route:  entity.page_object.canonical
+  title: Delete
+  weight: 10
+
