@@ -31,7 +31,6 @@ use Drupal\lifebook\ProjectTypeInterface;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/lifebook/admin/project_type/{project_type}",
  *     "add-form" = "/lifebook/admin/project_type/add",
  *     "edit-form" = "/lifebook/admin/project_type/{project_type}/edit",
  *     "delete-form" = "/lifebook/admin/project_type/{project_type}/delete",

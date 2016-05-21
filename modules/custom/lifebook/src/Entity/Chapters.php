@@ -58,6 +58,25 @@ class Chapters extends ContentEntityBase implements ChaptersInterface {
 
   use EntityChangedTrait;
 
+  
+  
+  /**
+   * {@inheritdoc}
+   */
+  public static function preDelete(EntityStorageInterface $storage, array $entities) {
+  	parent::preDelete($storage, $entities);
+  
+//   	// Delete all project assets
+//   	foreach ($entities as $entity) {
+//   		foreach($entity->field_class as $key => $val){
+//   			if($val->entity){
+//   				$val->entity->delete();
+//   			}
+//   		};
+//   	};
+  	 
+  }
+  
   /**
    * {@inheritdoc}
    */
@@ -67,7 +86,34 @@ class Chapters extends ContentEntityBase implements ChaptersInterface {
       'user_id' => \Drupal::currentUser()->id(),
     );
   }
-
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function getPages() {
+  	$out = array();
+  	foreach($this->field_pages_ref as $key => $val){  			
+  		$out[] = $val->entity->id();
+  	}
+  	return $out;
+  }
+  
+  public function getPageObject() {
+  	$query = \Drupal::entityQuery('page_object')
+  	    ->condition('field_class.entity.id', $this->id());;
+  	
+  	return $query->execute(); 
+  	
+  }
+  
+  public function getProject() {
+  	$query = \Drupal::entityQuery('project')
+  	->condition('field_class.entity.id', $this->id());;
+  	 
+  	return $query->execute();
+  	 
+  }
+  
   /**
    * {@inheritdoc}
    */

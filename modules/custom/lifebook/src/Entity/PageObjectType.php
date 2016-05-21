@@ -31,7 +31,6 @@ use Drupal\lifebook\PageObjectTypeInterface;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/lifebook/admin/page_object_type/{page_object_type}",
  *     "add-form" = "/lifebook/admin/page_object_type/add",
  *     "edit-form" = "/lifebook/admin/page_object_type/{page_object_type}/edit",
  *     "delete-form" = "/lifebook/admin/page_object_type/{page_object_type}/delete",

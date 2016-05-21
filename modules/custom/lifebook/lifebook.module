@@ -28,6 +28,11 @@ function lifebook_help($route_name, RouteMatchInterface $route_match) {
  */
 function lifebook_theme() {
   $theme = [];
+  $theme['chapters'] = [
+    'render element' => 'elements',
+    'file' => 'chapters.page.inc',
+    'template' => 'chapters',
+  ];
   $theme['book'] = [
     'render element' => 'elements',
     'file' => 'book.page.inc',

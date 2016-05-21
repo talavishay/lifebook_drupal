@@ -61,6 +61,14 @@ class PageObject extends ContentEntityBase implements PageObjectInterface {
 
   use EntityChangedTrait;
 
+  
+  /**
+   * {@inheritdoc}
+   */
+  public static function preDelete(EntityStorageInterface $storage, array $entities) {
+  	parent::preDelete($storage, $entities);
+  
+  }
   /**
    * {@inheritdoc}
    */

@@ -9,7 +9,7 @@ use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\lifebook\ProjectInterface;
 use Drupal\user\UserInterface;
-
+use Drupal\lifebook\Entity\PageObject;
 /**
  * Defines the Project entity.
  *
@@ -61,6 +61,35 @@ class Project extends ContentEntityBase implements ProjectInterface {
 
   use EntityChangedTrait;
 
+  
+  /**
+   * {@inheritdoc}
+   */
+  public static function preDelete(EntityStorageInterface $storage, array $entities) {
+  	parent::preDelete($storage, $entities);
+  
+  	// Delete all project assets
+  	foreach ($entities as $entity) {
+  		foreach($entity->field_class as $key => $val){
+//   			//delete all page objects (referencing this entity)
+//   			$query = \Drupal::entityQuery('page_object')
+//   	  		  ->condition('field_class.entity.id', $val->entity->id());
+  			if($val->entity){
+  				$val->entity->delete();
+  			};
+//   			$ids = $query->execute();
+//   			if(count($ids)){
+// 	  			$entity_storage = \Drupal::
+// 	  				entityTypeManager()
+// 	  				->getStorage('chapters')
+// 	  				->delete($val->entity->id());
+//   			};
+  		};
+  	};
+  	
+  }
+  
+  
   /**
    * {@inheritdoc}
    */
@@ -70,7 +99,36 @@ class Project extends ContentEntityBase implements ProjectInterface {
       'user_id' => \Drupal::currentUser()->id(),
     );
   }
-
+  /**
+   * {@inheritdoc}
+   */
+  public function getChapters() {
+  	$out = array();
+  	foreach($this->field_class as $key => $val){
+  		$out[] = \Drupal::service('serializer')->serialize($val->entity , 'json'); 
+//   		array(
+//   			"data"  => ,
+//   			"name"	=> $val->entity->getName(),
+//   			"id"	=> $val->entity->id(),
+// 			"pages"	=> $val->entity->getPages(),
+//   			"students"	=> $val->entity->getPageObject(),
+  				
+//   		);
+  	}
+ 
+  	return $out;
+  }
+  public function getStudents() {
+  	$out = array();
+  	foreach($this->field_class as $key => $val){
+  		$pageObjectIds = $val->entity->getPageObject();
+  		$pageObjects = PageObject::loadMultiple($pageObjectIds);
+  		foreach($pageObjects  as $pageObject ){
+  			$out[] = \Drupal::service('serializer')->serialize($pageObject, 'json');
+  		};
+  	};
+  	return $out;
+  }
   /**
    * {@inheritdoc}
    */

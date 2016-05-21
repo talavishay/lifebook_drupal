@@ -12,11 +12,81 @@
  *
  * @see template_preprocess_project()
  *
- * @ingroup themeable
+ * @ingroup themeable  
  */
+ {{ dump(_context['elements']|keys) }}
+{{ kint(content) }}
 #}
-<div{{ attributes.addClass('project') }}>
-  {% if content %}
-    {{- content -}}
-  {% endif %}
+<style>
+.row{
+	display: flex;
+	justify-content: space-around;
+}
+#dialogs {
+    position: fixed;
+    top: 45px;
+    left: 5%;
+    width: 88%;
+    z-index: 10;
+    
+}
+#dialogs > span{
+	background: gainsboro;
+    border-radius: 10px;
+    padding: 1%;
+    box-shadow: 0px 0px 7px 4px gray;
+    display : block;
+}
+span.closeDialog {
+    min-width: 30px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+Inherited from body.layout-no-sidebars.user-logged-in.path-lifebook.toolbar-vertical.toolbar-fixed
+
+</style>
+<div class="row">
+	{{ content.field_delivery }}
+	{{ content.field_printery }}
+	{{ content.field_due_date_design }}
+	{{ content.field_supply_date }}
+</div>
+<div class="row">
+	<div class="field field--type-datetime field--label-above">
+		<div class="field__label">Created</div>
+		<div class="field__item">
+			{{ content.created}}
+		</div>
+    </div>
+	{{ content.name}}
+	<div class="field field--type-datetime field--label-above">
+		<div class="field__label">Project type</div>
+		<div class="field__item">
+			{{ content.name["#bundle"]}}
+		</div>
+    </div>
+</div>
+<div class="row">
+	
+</div>
+<div{{ attributes.addClass('project lifebookProjectApp') }}>
+
+	<div id="state">
+		
+	</div>
+	<div id="importer">
+		
+	</div>
+	<button id="chaptersMaxPage">max pages</button>
+	<div id="paginator">
+		
+	</div>
+	<div id="backgrid">
+		
+	</div>
+	  {% if content %}
+	    {{ content |without("field_due_date_design", "field_supply_date")}}
+	  {% endif %}
+	<div id="dialogs"></div>
 </div>

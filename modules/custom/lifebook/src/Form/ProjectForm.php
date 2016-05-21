@@ -18,6 +18,9 @@ class ProjectForm extends ContentEntityForm {
   public function buildForm(array $form, FormStateInterface $form_state) {
     /* @var $entity \Drupal\lifebook\Entity\Project */
     $form = parent::buildForm($form, $form_state);
+    $form["test"] = array(
+		'#markup' => '<em>This is filtered using the admin tag list</em>',
+    );
     $entity = $this->entity;
 
     return $form;

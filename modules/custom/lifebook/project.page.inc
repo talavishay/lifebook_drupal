@@ -10,7 +10,7 @@
 use Drupal\Core\Render\Element;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
-
+use Symfony\Component\Serializer\SerializerInterface;
 /**
  * Prepares variables for Project templates.
  *
@@ -28,7 +28,22 @@ function template_preprocess_project(array &$variables) {
   // Helpful $content variable for templates.
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
-  }
+  };
+	$variables['content']['created'] = array(
+  		'#markup' => \Drupal::service('date.formatter')->format($project->getCreatedTime(), 'date_text')
+	);
+  
+   $variables['#attached']['library'][] = 'lifebook/lifebookProjectApp';
+// 	$output = \Drupal::service('serializer')->serialize($project, FORMAT);
+
+//       $output = $serializer->serialize($project, 'json');
+   $variables['#attached']['drupalSettings']['lifebookProjectApp'] = array(
+   		'classes'	=> $project->getChapters(),
+   		'students'	=> $project->getStudents(),
+		'name'		=> $project->getName(),
+		'id'		=> $project->id(),
+   );
+   //~ $variables['#attached']['drupalSettings']['lifebookProjectApp'][] = "XXX";
 }
 
 /**
