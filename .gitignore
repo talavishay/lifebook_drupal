@@ -1,10 +1,17 @@
 *
 /*
+
 !/modules
 /modules/contrib
+
 !/modules/custom
 !/modules/custom/lifebook
 !/modules/custom/lifebook/**
+
+node_modules
+dist
+vendorDist
+
 !.gitignore
 !README.md
 
