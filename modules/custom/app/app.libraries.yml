@@ -1,0 +1,11 @@
+app:
+  version: VERSION
+  js:
+    # Ensure to run before contextual/drupal.context-toolbar.
+    # Core.
+    js/dist/index.js: { weight: -10 }
+    # Models.
+  css:
+    theme:
+      css/index.css: {}
+      js/dist/index.css: {}

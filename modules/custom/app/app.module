@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Contains app.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+/**
+ * Implements hook_help().
+ */
+function app_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the app module.
+    case 'help.page.app':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+function app_user_login($account) {
+  // We want to redirect user on login.
+  $response = new RedirectResponse("/modules/custom/app/js");
+  $response->send();
+  return;
+}
+?>

@@ -1,0 +1,10 @@
+.bookPreview.fileBrowser.loader {
+    background: blue;
+    transition-duration: 2s;
+}
+.editing input[type="text"] {
+    box-shadow: 1px 1px 6px 0px red;
+/*
+    border: none;
+*/
+}

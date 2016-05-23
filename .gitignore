@@ -8,6 +8,12 @@
 !/modules/custom/lifebook
 !/modules/custom/lifebook/**
 
+!/modules/custom/app
+!/modules/custom/app/**
+/modules/custom/app/js
+
+
+
 node_modules
 dist
 vendorDist

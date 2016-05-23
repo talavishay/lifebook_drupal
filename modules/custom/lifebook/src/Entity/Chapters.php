@@ -98,7 +98,7 @@ class Chapters extends ContentEntityBase implements ChaptersInterface {
   	return $out;
   }
   
-  public function getPageObject() {
+  public function getPageObjects() {
   	$query = \Drupal::entityQuery('page_object')
   	    ->condition('field_class.entity.id', $this->id());;
   	
@@ -110,8 +110,35 @@ class Chapters extends ContentEntityBase implements ChaptersInterface {
   	$query = \Drupal::entityQuery('project')
   	->condition('field_class.entity.id', $this->id());;
   	 
-  	return $query->execute();
+  	$ids = $query->execute();
+  	return count($ids) ? $ids : null;
   	 
+  }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function getResources() {
+   	$chapterData = array(
+  		"chapter"	=> json_decode(\Drupal::service('serializer')->serialize($this, 'json')),
+  		"pageObjects" => array(),
+  		"pages" => array(),
+  	);
+   	
+  	foreach(PageObject::loadMultiple($this->getPageObjects()) as $pageObject ){
+  		$chapterData["pageObjects"][] = json_decode(\Drupal::service('serializer')->serialize($pageObject, 'json'));
+  	};
+  	foreach(Pages::loadMultiple($this->getPages()) as $page ){
+  		$p = array(
+  			"page"			=> json_decode(\Drupal::service('serializer')->serialize($page, 'json')),
+  			"compositions"	=> array()
+  		);
+  		foreach(Composition::loadMultiple($page->getCompositions())  as  $composition){
+  				$p["compositions"][]	= json_decode(\Drupal::service('serializer')->serialize($composition, 'json'));
+  		};  		
+  		$chapterData["pages"][] = $p;
+  	};
+	return $chapterData;
   }
   
   /**

@@ -33,7 +33,7 @@ function template_preprocess_chapters(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
-  $ids = $chapters->getPageObject();
+  $ids = $chapters->getPageObjects();
   $pageObjects = PageObject::loadMultiple($ids);
   $out = "<ul>";
   foreach($pageObjects  as $val){

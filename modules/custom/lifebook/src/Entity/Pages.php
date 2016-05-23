@@ -58,6 +58,14 @@ class Pages extends ContentEntityBase implements PagesInterface {
 
   use EntityChangedTrait;
 
+  public function getCompositions() {
+  	$out = array();
+  	foreach($this->field_composition_ref as $key => $val){
+  		$out[] = $val->entity->id();
+  	}
+  	return $out;
+  }
+  
   /**
    * {@inheritdoc}
    */

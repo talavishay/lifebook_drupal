@@ -31,12 +31,8 @@ function template_preprocess_project(array &$variables) {
   };
 	$variables['content']['created'] = array(
   		'#markup' => \Drupal::service('date.formatter')->format($project->getCreatedTime(), 'date_text')
-	);
-  
+	);  
    $variables['#attached']['library'][] = 'lifebook/lifebookProjectApp';
-// 	$output = \Drupal::service('serializer')->serialize($project, FORMAT);
-
-//       $output = $serializer->serialize($project, 'json');
    $variables['#attached']['drupalSettings']['lifebookProjectApp'] = array(
    		'classes'	=> $project->getChapters(),
    		'students'	=> $project->getStudents(),

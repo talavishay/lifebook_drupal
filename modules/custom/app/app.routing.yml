@@ -1,0 +1,35 @@
+app.upload:
+  path: '/lifebook/uploads/{key}'
+  defaults:
+    _controller: '\Drupal\app\Controller\upload::post'    
+  requirements:
+    _permission: 'access content'
+app.images:
+  path: '/lifebook/images/{entity}'
+  defaults:
+    _controller: '\Drupal\app\Controller\images::getByUUid'    
+  requirements:
+    _permission: 'view published composition entities'
+app._images:
+  path: '/lifebook/_images/{entity}'
+  defaults:
+    _controller: '\Drupal\app\Controller\images::getById'    
+  requirements:
+    _permission: 'view published composition entities'
+
+# In order to to create pages it is necessary to define routes for them.
+# A route maps a URL path to a controller. It defines what function
+# or method will be called when a URL is accessed.
+# If the user accesses http://drupal8.dev//lifebook/app/resources/{name}, the routing
+# system will look for a route with that path. In this case it will find a
+# match, and execute the _controller callback. In this case the callback is
+# defined as a classname
+# ("\Drupal\app\Controller\AppResourceController")
+# and a method ("chapter").
+app.app_resource_controller_chapter:
+  path: '/lifebook/app/resources/chapter/{chapterId}'
+  defaults:
+    _controller: '\Drupal\app\Controller\AppResourceController::chapter'
+    _title: 'get chapter resources'
+  requirements:
+    _permission: 'access content'

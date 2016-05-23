@@ -121,7 +121,7 @@ class Project extends ContentEntityBase implements ProjectInterface {
   public function getStudents() {
   	$out = array();
   	foreach($this->field_class as $key => $val){
-  		$pageObjectIds = $val->entity->getPageObject();
+  		$pageObjectIds = $val->entity->getPageObjects();
   		$pageObjects = PageObject::loadMultiple($pageObjectIds);
   		foreach($pageObjects  as $pageObject ){
   			$out[] = \Drupal::service('serializer')->serialize($pageObject, 'json');

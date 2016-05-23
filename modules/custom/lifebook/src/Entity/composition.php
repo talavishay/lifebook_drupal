@@ -70,7 +70,7 @@ class composition extends ContentEntityBase implements compositionInterface {
       'user_id' => \Drupal::currentUser()->id(),
     );
   }
-
+  
   /**
    * {@inheritdoc}
    */
