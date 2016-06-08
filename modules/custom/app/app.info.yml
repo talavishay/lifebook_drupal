@@ -5,3 +5,5 @@ core: 8.x
 package: Custom
 dependencies:
   - lifebook
+  - inline_entity_form
+  - kint

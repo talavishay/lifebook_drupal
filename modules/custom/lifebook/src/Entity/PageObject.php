@@ -65,6 +65,14 @@ class PageObject extends ContentEntityBase implements PageObjectInterface {
   /**
    * {@inheritdoc}
    */
+  public function getJson() {
+  	return  \Drupal::service('serializer')->serialize($this , 'json'); 
+  
+  }
+  
+  /**
+   * {@inheritdoc}
+   */
   public static function preDelete(EntityStorageInterface $storage, array $entities) {
   	parent::preDelete($storage, $entities);
   

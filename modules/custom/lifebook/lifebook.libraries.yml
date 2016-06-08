@@ -2,7 +2,7 @@ lifebookProjectApp:
   version: 1.1
   css:
     theme:
-      lifebookProjectApp/dist/index.css: {}
+      lifebookProjectApp/src/index.css: {}
   js:
     lifebookProjectApp/vendorDist/index.vendor.js: {}
     lifebookProjectApp/dist/index.js: {}

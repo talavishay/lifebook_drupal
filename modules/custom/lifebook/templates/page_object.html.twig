@@ -13,10 +13,21 @@
  * @see template_preprocess_page_object()
  *
  * @ingroup themeable
+{{ dump(_context['elements']|keys) }}
  */
 #}
-<div{{ attributes.addClass('page_object') }}>
-  {% if content %}
-    {{- content -}}
-  {% endif %}
+<div{{ attributes.addClass('page_object lifebookStudentApp') }}>
+	{% if content %}{{ 
+		content | without(	
+			"field_personal_picture",
+			"field_passport")
+	}}{% endif %}
+	<div class="imagesFlex">
+		<div class="field_personal_picture">
+			{{ content.field_personal_picture }}
+		</div>
+		<div class="field_passport">
+			{{ content.field_passport }}
+		</div>
+	</div>
 </div>

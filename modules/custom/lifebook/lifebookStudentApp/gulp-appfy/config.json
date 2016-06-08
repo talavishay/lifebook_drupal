@@ -1,0 +1,18 @@
+{
+"debug":true,
+  "sourcePath": "src",
+  "destPath": "dist",
+  "destVendorPath": "vendorDist",
+  "assetsPath": "assets",
+  "entryCss": "index.css",
+  "entryJs": "index.js",
+  "entryVendorJs": "index.vendor.js",
+  "vendors" :  [	"backbone",
+					"backbone.radio", 
+					"backbone.marionette"],
+  "watchify": true,
+  "notify" : {
+    "onError": false,
+    "onUpdated": false
+  }
+}
