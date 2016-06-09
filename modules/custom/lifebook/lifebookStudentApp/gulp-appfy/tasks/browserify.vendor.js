@@ -7,11 +7,9 @@ var gulp = require( 'gulp' ),
     util = require('gulp-util'),
     collapse = require('bundle-collapser/plugin'),
     buffer = require('vinyl-buffer'),
-	//~ bowerResolve = require('bower-resolve'),
      _ = require('underscore'),
     sourcemaps = require('gulp-sourcemaps'),
     nodeResolve = require('resolve');
-    //~ p = require('partialify/custom');
 
 /**
  * Gulp task to run browserify over config.entryJs
@@ -72,11 +70,8 @@ module.exports = function ( config ) {
         } );
         
         _.each(config.vendors, function(mod){
-			bundler.require(nodeResolve.sync(mod), { expose: mod });
-		});
-        //~ bundler.require(bowerResolve.fastReadSync('Jcrop'), { expose: 'Jcrop' });
-        //~ bundler.external('jquery');
-        //~ bundler.external('backbone');
+		bundler.require(nodeResolve.sync(mod), { expose: mod });
+	});
 
         return browserifyBundle( bundler );
     };

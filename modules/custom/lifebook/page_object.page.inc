@@ -31,6 +31,7 @@ function template_preprocess_page_object(array &$variables) {
   }
   //~ $variables['#attached']['library'][] = 'lifebook/lifebookStudentApp';
   //
+  $variables['#attached']['library'][] = 'lifebook/lifebookStudentApp';
     $variables['#attached']['drupalSettings']['lifebookStudentApp'] = array(
        $page_object->uuid() => json_decode(\Drupal::service('serializer')->serialize($page_object, 'json'))
     );

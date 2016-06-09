@@ -1,7 +1,8 @@
 var pageObjectStudent = {
 	url		: function(){
-		var format = '?_format=json';
-			return isNaN(parseInt(this.id)) ? 
+		this.id =  _.isArray(this.id) ?  this.id[0].value : this.id ,
+        format = '?_format=json';
+			return this.isNew() ? 
 				'/entity/page_object' + format :
 				'/lifebook/page_object/'+ this.id + format;
 	},
@@ -30,29 +31,18 @@ var pageObjectStudent = {
 						return val;
 					}
 				}else {
-					return "";
+					return val;
 				}
 			};
 		});
 		return resp;
 	},
 	_toExtendedJSON: function() {
-		//~ var attrs = App._.pick(this.attributes, 'data', 'meta');
-		var attrs = _.omit(this.attributes, 'name' ,'url', 'changed', 'created','uuid', 'user_id', 'status', 'langcode', 'target_id', 'target_id', 'target_type' ,'target_uuid');
-		_.each(attrs, function(value, key) {
-			if(_.isArray(value)){
-				attrs[key] = value ;
-			} else {
-				attrs[key] = [{value: value}];
-			}
-		});
-		if(!this.isNew()){
-			attrs.id = this.id;
-		};
-			
-		attrs.name = this.attributes.name || "blabla";
-		attrs.type = [{"target_id":"student"}];
-		return attrs; 
+    this.attributes.type = [{
+      target_id:"student",
+    }];
+    
+		return _.omit(this.attributes, 'url', 'changed', 'created', 'user_id', 'uuid','id', 'langcode');
 	},
 	parse : function(resp) {
 		if(!_.isUndefined(resp)){
@@ -82,10 +72,6 @@ var pageObjectStudent = {
 		"field_last_name"	: "שם משפחה",
 		"field_passport_number" : "מספר תמונה",
 	},
-	defaults : {
-		"field_passport_number"	: "",
-		"field_page"			: "",
-		"field_student_text"	: "",
-	}
+	
 };
 module.exports = Backbone.Model.extend(pageObjectStudent);

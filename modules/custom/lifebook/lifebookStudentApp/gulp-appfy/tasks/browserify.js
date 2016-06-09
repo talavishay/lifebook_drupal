@@ -9,7 +9,6 @@ var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash.assign');
 var _ = require('underscore');
-// add custom browserify options here
 module.exports = function ( config ) {
 
 	var b = browserify({
@@ -19,7 +18,6 @@ module.exports = function ( config ) {
 		packageCache: {},
 		plugin: [watchify]
 	});
-	b.transform("debowerify");
 	_.each(config.vendors, function(mod){
 		b.external(mod);
 	});

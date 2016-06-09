@@ -10,3 +10,15 @@ lifebookProjectApp:
   - core/jquery
   - core/backbone
   - core/underscore
+lifebookStudentApp:
+  version: 1.1
+  css:
+    theme:
+      lifebookStudentApp/src/index.css: {}
+  js:
+    lifebookStudentApp/vendorDist/index.vendor.js: {}
+    lifebookStudentApp/dist/index.js: {}
+  dependencies:
+  - core/jquery
+  - core/backbone
+  - core/underscore

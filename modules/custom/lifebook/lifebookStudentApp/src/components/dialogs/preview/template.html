@@ -1,0 +1,31 @@
+<%
+function urlToLabel(store, item, c){
+  if(c > 2 ){
+    return store ? store+item+ "/" : "/" +item+ "/" ;
+  };
+};
+if(obj.filesize){
+  filesize = obj.filesize  = App.filesize(obj.filesize, {bits: true}); 
+}
+lis = _.map( _.pick(obj, "filename", "filesize", "created", "url"),
+        function(item, key){
+        if(key === "url"){
+          item = '<a href="' + item + '">' 
+                  +_.reduce(item.split('/'), urlToLabel) 
+                  +'</a>';
+        };
+        return '<li data-key="'+key+'">' +key + '  :  ' + item  + '</li>' ;
+      });
+src = src ||url;
+
+%>
+<img src="<%=url%>" />
+
+<div class="info" >
+<ul>
+  <% _.each(lis, function(item){%>
+    <%=item%>
+  <%});%>
+</ul>
+
+</div>

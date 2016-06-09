@@ -8,8 +8,8 @@
   "entryJs": "index.js",
   "entryVendorJs": "index.vendor.js",
   "vendors" :  [	"backbone",
-					"backbone.radio", 
-					"backbone.marionette"],
+			"backbone.radio", 
+			"backbone.marionette"],
   "watchify": true,
   "notify" : {
     "onError": false,
