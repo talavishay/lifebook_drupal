@@ -66,7 +66,7 @@ class PageObject extends ContentEntityBase implements PageObjectInterface {
    * {@inheritdoc}
    */
   public function getJson() {
-  	return  \Drupal::service('serializer')->serialize($this , 'json'); 
+  	return  json_decode(\Drupal::service('serializer')->serialize($this , 'json')); 
   
   }
   

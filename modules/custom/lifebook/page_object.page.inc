@@ -29,12 +29,13 @@ function template_preprocess_page_object(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
-  //~ $variables['#attached']['library'][] = 'lifebook/lifebookStudentApp';
+  $variables['uuid'] = $page_object->uuid() ;
   //
+  
   $variables['#attached']['library'][] = 'lifebook/lifebookStudentApp';
-    $variables['#attached']['drupalSettings']['lifebookStudentApp'] = array(
-       $page_object->uuid() => json_decode(\Drupal::service('serializer')->serialize($page_object, 'json'))
-    );
+  $variables['#attached']['drupalSettings']['lifebookStudentApp'] = array(
+     $page_object->uuid() => json_decode(\Drupal::service('serializer')->serialize($page_object, 'json'))
+  );
 }
 
 /**

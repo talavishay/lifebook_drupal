@@ -1,7 +1,5 @@
 var view = {
     template : false,
-    //~ el : ".page_object",
-    el : "#main",
     ui : {
         "last_name" : ".field--name-field-last-name .field__item",
         "name" : ".field--name-name .field__item",
@@ -10,22 +8,35 @@ var view = {
     modelEvents : {
       "change" : "_updateModel"
     },
-    initialize : function(){
-      var that = this;
-      that.bindings = {};
-      _.each(["field-last-name", "name", "field-student-text"], function(item){
-          that.bindings['.field--name-' + item + ' .field__item'] = item.replace(/-/g, "_");
-      })
-      this.render();
-      this.ui.last_name.attr("contenteditable", "true");
-      this.ui.name.attr("contenteditable", "true");
-      this.ui.text.attr("contenteditable", "true");
+    _stickit : function(){
+      this.bindings = {};
+
+      if(this.$el.prop("tagName") !== "TR"){
+          this.ui.last_name.attr("contenteditable", "true");
+          this.ui.name.attr("contenteditable", "true");
+          this.ui.text.attr("contenteditable", "true");
+      
+        _.each(["field-last-name", "name", "field-student-text"], function(item){
+            this.bindings['.field--name-' + item + ' .field__item'] = item.replace(/-/g, "_");
+        }, this);
+        
+      } else {
+        this.$el.find('td:visible:nth-child(1)')
+          .attr({
+             "contenteditable": "true",
+             "class" : "name"
+        });
+        this.$el.parent().find('td:visible:nth-child(2)')
+          .attr({
+             "contenteditable": "true",
+             "class" : "field-last-name"
+        });
+      
+        this.bindings['.name'] = 'name';
+        this.bindings['.field-last-name'] = 'field_last_name';
+        
+      };
       this.stickit();
     },
-    _updateModel : _.throttle(function(m, s){
-        this.model.save({
-          name : m.get("name")
-        });
-    }, 5000)
 }
 module.exports = App.Marionette.LayoutView.extend(view);

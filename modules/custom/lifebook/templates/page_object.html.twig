@@ -16,7 +16,7 @@
 {{ dump(_context['elements']|keys) }}
  */
 #}
-<div{{ attributes.addClass('page_object lifebookStudentApp') }}>
+<div data-uuid="{{uuid}}" {{ attributes.addClass('page_object lifebookStudentApp') }}>
 	{% if content %}{{ 
 		content | without(	
 			"field_personal_picture",

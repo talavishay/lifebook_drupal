@@ -60,7 +60,7 @@ var pageObjectStudent = {
 					var k = _.findKey(map, function(val){
 						return key === val;
 					});
-					o[k] = value;
+					//~ o[k] = value;
 				});
 				return o;
 			};
@@ -72,6 +72,11 @@ var pageObjectStudent = {
 		"field_last_name"	: "שם משפחה",
 		"field_passport_number" : "מספר תמונה",
 	},
+  _updateName : _.throttle(function(m, s){
+        this.save({
+          name : m.get("name")
+        });
+    }, 500, this)
 	
 };
 module.exports = Backbone.Model.extend(pageObjectStudent);
